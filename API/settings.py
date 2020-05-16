@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'API.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-     'default': dj_database_url.config(conn_max_age=600) or {
+    'default': dj_database_url.config(conn_max_age=600) or {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('DB_NAME', 'coronawatch'),
         'USER': os.environ.get('DB_USER', 'root'),
@@ -125,8 +125,8 @@ DATABASES = {
     }
 }
 
-REST_FRAMEWORK={
-'DEFAULT_AUTHENTICATION_CLASSES': (
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
 
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',

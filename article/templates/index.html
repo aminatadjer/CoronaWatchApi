@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tuto2</title>
+</head>
+<body>
+<center width="80%" height="80%">
+<h3> 
+{% block includes %}
+{{ Title| safe }}
+
+</h3>
+
+{{ media | safe}}
+
+<p>
+
+{{ content| safe }}
+{% endblock includes %}
+</p>
+</center>
+</body>
+</html>
