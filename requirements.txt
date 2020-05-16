@@ -1,0 +1,11 @@
+django==3.0.4
+markdown
+django-filter
+djoser
+django-cors-headers
+djangorestframework-simplejwt
+djangorestframework
+gunicorn
+psycopg2-binary
+dj-database-url
+pymysql
