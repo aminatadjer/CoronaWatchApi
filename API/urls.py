@@ -33,6 +33,7 @@ urlpatterns = [
     path('', include('coronawatch.urls')),
     path('', include('report.urls')),
     path('', include('article.urls')),
+    path('',include('customauth.urls')),
     path('api/token/obtain', MyTokenObtainPairView.as_view(), name='token_create'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

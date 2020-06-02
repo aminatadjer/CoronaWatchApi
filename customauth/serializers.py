@@ -8,10 +8,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
         # Add custom claims
         token['role'] = user.role
-        # ...
+        token['userId'] = user.pk
+        token['email'] = user.email
 
         return token
 
@@ -33,3 +33,8 @@ class UserCreateSerializer(UserCreateSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'

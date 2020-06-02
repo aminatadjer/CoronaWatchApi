@@ -7,6 +7,7 @@ from .views import *
 
 
 router = routers.DefaultRouter()
+router.register('api/user', UserViewSet, 'user')
 """""
 router.register('api/token/obtain', MyTokenObtainPairView, 'token_create')
 router.register('api/token/refresh/', TokenRefreshView, 'token_refresh')
