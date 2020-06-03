@@ -11,4 +11,4 @@ class Article(models.Model):
     vu = models.BooleanField(default=False)
     titre = models.CharField(max_length=20)
     contenu = models.TextField()
-    media = models.FileField(blank=False, null=False)
+    media = models.FileField(null=True, default=None)
