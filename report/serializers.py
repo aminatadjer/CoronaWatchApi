@@ -2,12 +2,6 @@ from rest_framework import serializers, fields
 from report.models import *
 
 
-
-class RegionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Region
-        fields = '__all__'
-
 class CasSignalerSerializer(serializers.ModelSerializer):
     class Meta:
         model = CasSignalee

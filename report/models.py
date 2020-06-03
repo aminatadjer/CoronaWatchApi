@@ -1,15 +1,7 @@
 from django.db import models
-
+from map.models import Region
 # Create your models here.
 
-
-class Region(models.Model):
-    nom = models.TextField(max_length=20)
-    suspect = models.IntegerField()
-    confirme = models.IntegerField()
-    critique = models.IntegerField()
-    mort = models.IntegerField()
-    guerie = models.IntegerField()
 
 
 class CasSignalee(models.Model):
