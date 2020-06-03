@@ -85,3 +85,10 @@ class ArticleViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['get'], detail=False)
+    def ArticleAll(self, request):
+        if(request.method == "GET"):
+            data = Article.objects.all()
+            serializers = ArticleSerializerURL(data, many=True)
+            return Response(serializers.data)

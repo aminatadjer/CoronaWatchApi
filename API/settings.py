@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'sendMail',
-    'article'
+    'article',
+    'map'
 
 
 ]

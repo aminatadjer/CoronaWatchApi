@@ -18,3 +18,9 @@ class ArticleSerializerSupprimer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ['supprime', 'vu']
+
+
+class ArticleSerializerURL(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['url']

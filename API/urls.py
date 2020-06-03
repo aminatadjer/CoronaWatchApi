@@ -29,7 +29,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('', include('map.urls')),
     path('', include('coronawatch.urls')),
     path('', include('report.urls')),
     path('', include('article.urls')),

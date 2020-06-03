@@ -5,32 +5,15 @@ from report.serializers import *
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 from sendMail.views import send
-
-
-# Create your views here.
 from django.http import JsonResponse
-
-
 from rest_framework import viewsets, permissions, renderers
 
 
 import time
-# centenu viewset
-
 
 
 from .models import *
 from .serializers import *
-
-
-
-
-class RegionViewSet(viewsets.ModelViewSet):
-    queryset = Region.objects.all()
-    permission_classes = [
-        permissions.AllowAny
-    ]
-    serializer_class = RegionSerializer
 
 
 class CasSignaleeViewSet(viewsets.ModelViewSet):
@@ -49,7 +32,6 @@ class CasSignaleeViewSet(viewsets.ModelViewSet):
         elif (request.method == "POST"):
             serializers = CasSignalerSerializer(data=request.data)
             if(serializers.is_valid()):
-
                 serializers.save()
                 send(request.data['commentaire'],
                      "Nouveau cas Signalé", "media/"+str(request.data['media']), ['ga_tadjer@esi.dz'])
