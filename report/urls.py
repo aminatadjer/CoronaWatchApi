@@ -5,4 +5,5 @@ from report.views import CasSignaleeViewSet
 
 router = routers.DefaultRouter()
 router.register('api/casSignaler', CasSignaleeViewSet, 'casSignaler')
+
 urlpatterns = router.urls

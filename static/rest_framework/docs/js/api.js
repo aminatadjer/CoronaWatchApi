@@ -65,7 +65,7 @@ function formEntries (form) {
 
 $(function () {
   var $selectedAuthentication = $('#selected-authentication')
-  var $authControl = $('#customauth-control')
+  var $authControl = $('#auth-control')
   var $authTokenModal = $('#auth_token_modal')
   var $authBasicModal = $('#auth_basic_modal')
   var $authSessionModal = $('#auth_session_modal')
@@ -265,12 +265,12 @@ $(function () {
   })
 
   // Authentication: none
-  $authControl.find("[data-customauth='none']").click(function (event) {
+  $authControl.find("[data-auth='none']").click(function (event) {
     event.preventDefault()
     window.auth = null
     $selectedAuthentication.text('none')
-    $authControl.find("[data-customauth]").closest('li').removeClass('active')
-    $authControl.find("[data-customauth='none']").closest('li').addClass('active')
+    $authControl.find("[data-auth]").closest('li').removeClass('active')
+    $authControl.find("[data-auth='none']").closest('li').addClass('active')
   })
 
   // Authentication: token
@@ -285,8 +285,8 @@ $(function () {
       'token': token
     }
     $selectedAuthentication.text('token')
-    $authControl.find("[data-customauth]").closest('li').removeClass('active')
-    $authControl.find("[data-customauth='token']").closest('li').addClass('active')
+    $authControl.find("[data-auth]").closest('li').removeClass('active')
+    $authControl.find("[data-auth='token']").closest('li').addClass('active')
     $authTokenModal.modal('hide')
   })
 
@@ -302,8 +302,8 @@ $(function () {
       'password': password
     }
     $selectedAuthentication.text('basic')
-    $authControl.find("[data-customauth]").closest('li').removeClass('active')
-    $authControl.find("[data-customauth='basic']").closest('li').addClass('active')
+    $authControl.find("[data-auth]").closest('li').removeClass('active')
+    $authControl.find("[data-auth='basic']").closest('li').addClass('active')
     $authBasicModal.modal('hide')
   })
 
@@ -314,8 +314,8 @@ $(function () {
       'type': 'session'
     }
     $selectedAuthentication.text('session')
-    $authControl.find("[data-customauth]").closest('li').removeClass('active')
-    $authControl.find("[data-customauth='session']").closest('li').addClass('active')
+    $authControl.find("[data-auth]").closest('li').removeClass('active')
+    $authControl.find("[data-auth='session']").closest('li').addClass('active')
     $authSessionModal.modal('hide')
   })
 })

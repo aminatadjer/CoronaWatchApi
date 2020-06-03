@@ -576,7 +576,7 @@ module.exports = {
 },{}],12:[function(require,module,exports){
 'use strict';
 
-var auth = require('./customauth');
+var auth = require('./auth');
 var client = require('./client');
 var codecs = require('./codecs');
 var document = require('./document');
@@ -1182,7 +1182,7 @@ function URL(address, location, parser) {
   }
 
   //
-  // Parse down the `customauth` for the username and password.
+  // Parse down the `auth` for the username and password.
   //
   url.username = url.password = '';
   if (url.auth) {
