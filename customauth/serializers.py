@@ -40,6 +40,13 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+class MailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
+
+
+
 class UserPasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=255, style={'input_type': 'password'})
     class Meta:
