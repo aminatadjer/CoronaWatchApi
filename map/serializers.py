@@ -8,7 +8,26 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RegionUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Region
+        fields = ['suspect', 'confirme', 'critique', 'mort',
+                  'guerie', 'degre', 'date_validation']
+
+
 class InfoRegionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = InfoRegion
+        model = HistoriqueRegion
         fields = '__all__'
+
+
+class InfoRegionRejeterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HistoriqueRegion
+        fields = fields = ['supprime', 'vu']
+
+
+class InfoRegionValiderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HistoriqueRegion
+        fields = fields = ['valide', 'vu']
