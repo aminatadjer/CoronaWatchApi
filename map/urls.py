@@ -6,4 +6,5 @@ from map.views import *
 router = routers.DefaultRouter()
 router.register('api/region', RegionViewSet, 'region')
 router.register('api/InfoRegion', InfoRegionViewSet, 'InfoRegion')
+router.register('api/centre', CentreReceptionViewSet, 'centre')
 urlpatterns = router.urls

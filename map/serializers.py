@@ -8,6 +8,12 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CentreReceptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CentreReception
+        fields = '__all__'
+
+
 class RegionUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Region

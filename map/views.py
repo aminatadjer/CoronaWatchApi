@@ -78,3 +78,11 @@ class InfoRegionViewSet(viewsets.ModelViewSet):
         queryset = HistoriqueRegion.objects.get(pk=pk)
         serializer = InfoRegionSerializer(queryset)
         return Response(serializer.data)
+
+
+class CentreReceptionViewSet(viewsets.ModelViewSet):
+    queryset = CentreReception.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = CentreReceptionSerializer
