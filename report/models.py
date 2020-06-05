@@ -10,5 +10,5 @@ class CasSignalee(models.Model):
     vu = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, default=2)
-    media = models.FileField()
+    media = models.FileField(null=True, default=None)
     commentaire = models.TextField(max_length=40)

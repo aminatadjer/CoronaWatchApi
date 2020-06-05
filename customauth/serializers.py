@@ -20,6 +20,7 @@ class UserCreateSerializer(UserCreateSerializer):
     username = serializers.CharField()
     password = serializers.CharField(min_length=8, write_only=True)
 
+
     class Meta(UserCreateSerializer.Meta):
         model = User
         fields = '__all__'
