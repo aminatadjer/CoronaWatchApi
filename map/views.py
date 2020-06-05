@@ -4,9 +4,11 @@ from map.models import Region
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-
+from datetime import datetime
 
 # Create your views here.
+
+
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     permission_classes = [
@@ -26,10 +28,53 @@ class RegionViewSet(viewsets.ModelViewSet):
         serializer = RegionSerializer(queryset)
         return Response(serializer.data)
 
+    @action(methods=['put'], detail=True)
+    def updateRegion(self, request, pk=None):
+        try:
+            region = Region.objects.get(pk=pk)
+        except Region.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = RegionUpdateSerializer(region, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class InfoRegionViewSet(viewsets.ModelViewSet):
-    queryset = InfoRegion.objects.all()
+    queryset = HistoriqueRegion.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
     serializer_class = InfoRegionSerializer
+
+    @action(methods=['put'], detail=True)
+    def rejeter(self, request, pk=None):
+        try:
+            infos = HistoriqueRegion.objects.get(pk=pk)
+        except HistoriqueRegion.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = InfoRegionRejeterSerializer(infos, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['put'], detail=True)
+    def valider(self, request, pk=None):
+
+        try:
+            infos = HistoriqueRegion.objects.get(pk=pk)
+        except HistoriqueRegion.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = InfoRegionValiderSerializer(infos, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['get'])
+    def get(self, request, pk=None):
+        queryset = HistoriqueRegion.objects.get(pk=pk)
+        serializer = InfoRegionSerializer(queryset)
+        return Response(serializer.data)
