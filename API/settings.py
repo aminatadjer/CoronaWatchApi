@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+import django_heroku
+#Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from datetime import timedelta
@@ -27,8 +30,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&imf&&oqf02--k4p8x__r%n-2%c6rzrjiyaetp#g9m#vpsg%x4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = os.environ.get('DEBUG', False)
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
+#DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
