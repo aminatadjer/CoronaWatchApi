@@ -11,7 +11,7 @@ from rest_framework import status
 class ReportGetTestCase(APITestCase):
 
     def setUp(self):
-        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now())
+        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now(), ArabicName="test arabe")
         self.casSignalee= CasSignalee.objects.create(region=Region.objects.filter().first(), commentaire="cas signale test")
 
     def test_get_reports(self):
@@ -40,7 +40,7 @@ class ReportGetTestCase(APITestCase):
 class ReportPutTestCase(APITestCase):
 
     def setUp(self):
-        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now())
+        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now(), ArabicName="test arabe")
         self.casSignalee= CasSignalee.objects.create(region=Region.objects.filter().first(), commentaire="cas signale test")
         self.sup_cas = {"supprime": True, "vu": True}
         self.valid_cas = {"valide": True, "vu": True}
@@ -62,7 +62,7 @@ class ReportPutTestCase(APITestCase):
 class ReportPostTestCase(APITestCase):
 
     def setUp(self):
-        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now())
+        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now(), ArabicName="test arabe")
         self.cas_playload={
             "valide": False,
             "supprime": False,

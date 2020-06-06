@@ -86,3 +86,9 @@ class CentreReceptionViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = CentreReceptionSerializer
+
+    @action(detail=True, methods=['get'])
+    def getByRegion(self, request, pk=None):
+        queryset = CentreReception.objects.filter(region=pk)
+        serializer = CentreReceptionSerializer(queryset, many=True)
+        return Response(serializer.data)

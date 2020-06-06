@@ -9,7 +9,7 @@ from rest_framework import status
 class RegionGetTestCase(APITestCase):
     def setUp(self):
         User.objects.create(username="test", password="mapmap")
-        self.region=Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie = 2,degre = 1, date_validation =timezone.now())
+        self.region=Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie = 2,degre = 1, date_validation =timezone.now(), ArabicName="test arabe")
         self.historique=HistoriqueRegion.objects.create(region=Region.objects.filter().first(),suspect=4, confirme=4, critique=2, mort=1, guerie = 2,degre = 1, agent=User.objects.filter().first() )
         self.centre= CentreReception.objects.create(region=Region.objects.filter().first(), nom='centre test',numero="1", adresse="adresse centre test")
 
@@ -90,7 +90,7 @@ class RegionPutTestCase(APITestCase):
 
     def setUp(self):
         User.objects.create(username="test", password="mapmap")
-        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now())
+        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now(), ArabicName="test arabe")
         self.historique = HistoriqueRegion.objects.create(region=Region.objects.filter().first(), suspect=4, confirme=4,critique=2, mort=1, guerie=2, degre=1,agent=User.objects.filter().first())
         self.centre = CentreReception.objects.create(region=Region.objects.filter().first(), nom='centre test',numero="1", adresse="adresse centre test")
         self.rejet_region={"supprime": True, "vu": True}
@@ -130,7 +130,7 @@ class RegionPostTestCase(APITestCase):
 
     def setUp(self):
         self.user =  User.objects.create(username="test", password="mapmap")
-        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now())
+        self.region = Region.objects.create(nom="test", suspect=4, confirme=4, critique=2, mort=1, guerie=2, degre=1,date_validation=timezone.now(), ArabicName="test arabe")
         self.region_playload={
             "nom": "Alger",
             "suspect": 4,
@@ -139,7 +139,8 @@ class RegionPostTestCase(APITestCase):
             "mort": 3,
             "guerie": 4,
             "degre": 5,
-            "date_validation": "2020-06-20T01:29:00Z"
+            "date_validation": "2020-06-20T01:29:00Z",
+            "ArabicName" :"test arabe"
 
         }
         self.centre_playload={

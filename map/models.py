@@ -5,6 +5,9 @@ from customauth.models import User
 
 class Region(models.Model):
     nom = models.TextField(max_length=20)
+    lat = models.FloatField(default=0)
+    lang = models.FloatField(default=0)
+    ArabicName = models.TextField(max_length=100)
     suspect = models.IntegerField(default=0)
     confirme = models.IntegerField(default=0)
     critique = models.IntegerField(default=0)
