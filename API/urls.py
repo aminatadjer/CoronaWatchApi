@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
 
 
 from customauth.views import MyTokenObtainPairView, CustomUserCreate
@@ -28,6 +29,15 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
+    # ...
+    # Use the `get_schema_view()` helper to add a `SchemaView` to project URLs.
+    #   * `title` and `description` parameters are passed to `SchemaGenerator`.
+    #   * Provide view name for use with `reverse()`.
+    path('openapi', get_schema_view(
+        title="Crona Watch Api",
+        version=1.0,
+        description="This API represent the backend for the CORONAWATCH school project by LOBELIAS team"
+    ), name='openapi-schema'),
     path('admin/', admin.site.urls),
     path('', include('map.urls')),
     path('', include('coronawatch.urls')),
