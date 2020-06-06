@@ -12,6 +12,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['role'] = user.role
         token['userId'] = user.pk
         token['email'] = user.email
+        token['username'] = user.username
 
         return token
 
@@ -19,7 +20,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class UserCreateSerializer(UserCreateSerializer):
     username = serializers.CharField()
     password = serializers.CharField(min_length=8, write_only=True)
-
 
     class Meta(UserCreateSerializer.Meta):
         model = User
@@ -35,13 +35,17 @@ class UserCreateSerializer(UserCreateSerializer):
         instance.save()
         return instance
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
+
 class UserPasswordSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(max_length=255, style={'input_type': 'password'})
+    password = serializers.CharField(
+        max_length=255, style={'input_type': 'password'})
+
     class Meta:
         model = User
         fields = ['password']
