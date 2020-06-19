@@ -4,9 +4,6 @@ from .models import *
 
 
 
-# content serializer
-
-
 
 
 

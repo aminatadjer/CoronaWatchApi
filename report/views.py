@@ -1,18 +1,13 @@
-from django.shortcuts import render
-from report.models import *
+
 from rest_framework import viewsets, permissions, status
-from report.serializers import *
+
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 from sendMail.views import send
-from django.http import JsonResponse
+
 from rest_framework import viewsets, permissions, renderers
 
 
-import time
-
-
-from .models import *
 from .serializers import *
 
 
