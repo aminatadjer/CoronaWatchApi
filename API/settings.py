@@ -51,9 +51,9 @@ INSTALLED_APPS = [
     'sendMail',
     'article',
     'map',
-    'internationalMap',
-    'videos'
-
+    'videos',
+    'commentaire',
+    'robot'
 
 ]
 
