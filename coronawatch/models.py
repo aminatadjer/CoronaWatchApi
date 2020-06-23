@@ -30,12 +30,6 @@ class Publication(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
 
-class VideoInternaut(Publication):
-    contenu = models.OneToOneField(
-        Publication, on_delete=models.CASCADE, parent_link=True)
-    titre = models.CharField(max_length=20)
-    description = models.TextField()
-    video = models.FileField()
 
 
 class InformationsVirus(Publication):

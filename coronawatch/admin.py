@@ -13,7 +13,7 @@ admin.site.register(User)
 admin.site.register(EtatSante)
 admin.site.register(InformationsVirus)
 admin.site.register(RebotSource)
-admin.site.register(VideoInternaut)
+
 
 
 
