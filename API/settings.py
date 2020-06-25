@@ -29,7 +29,11 @@ SECRET_KEY = '&imf&&oqf02--k4p8x__r%n-2%c6rzrjiyaetp#g9m#vpsg%x4'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get('DEBUG', False)
 DEBUG = True
+<<<<<<< HEAD
+ALLOWED_HOSTS = ["192.168.1.9", "127.0.0.1", "localhost"]
+=======
 ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
+>>>>>>> 21af803e6016f10f9c50258931b9c0ce36bb26b8
 
 
 # Application definition
