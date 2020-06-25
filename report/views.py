@@ -7,7 +7,7 @@ from sendMail.views import send
 
 from rest_framework import viewsets, permissions, renderers
 
-
+from config import CCC_AGENT_EMAIL, HEALTH_AGENT_EMAIL
 from .serializers import *
 
 
@@ -29,7 +29,7 @@ class CasSignaleeViewSet(viewsets.ModelViewSet):
             if(serializers.is_valid()):
                 serializers.save()
                 send(request.data['commentaire'],
-                     "Nouveau cas Signalé", "media/"+str(request.data['media']), ['ga_tadjer@esi.dz'])
+                     "Nouveau cas Signalé", "media/"+str(request.data['media']), [HEALTH_AGENT_EMAIL])
 
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -58,6 +58,6 @@ class CasSignaleeViewSet(viewsets.ModelViewSet):
             serializer.save()
             x = str(serializer1.data['media']).split("/")
             send(serializer1.data['commentaire'],
-                 "Nouveau cas Signalé", "media/" + x[2], ['ga_tadjer@esi.dz'])
+                 "Nouveau cas Signalé validé", "media/" + x[2], [CCC_AGENT_EMAIL])
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
