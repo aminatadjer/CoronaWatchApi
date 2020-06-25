@@ -8,5 +8,5 @@ djangorestframework
 gunicorn
 psycopg2-binary
 dj-database-url
-Scrapy
+tweepy
 feedparser

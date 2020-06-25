@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, action
 
 
 from rest_framework import viewsets, permissions
-
+from .twitterScrapping import getTweets
 from .googleSearchScrapping import ParseFeed
 from .serializers import *
 from .models import *
@@ -119,8 +119,9 @@ class TweetsViewSet(viewsets.ModelViewSet):
     serializer_class = TweetSerializer
 
     @action(methods=['post', 'get'], detail=False)
-    def show_list(self, request):
+    def getData(self, request):
         if(request.method == "GET"):
+            getTweets(50)
             data = Tweets.objects.all()
             serializers = TweetSerializer(data, many=True)
             return Response(serializers.data)

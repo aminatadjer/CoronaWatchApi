@@ -13,3 +13,7 @@ pip install django-cors-headers
 pip install djangorestframework-simplejwt
 
 pip install dj_database_url
+
+pip install tweepy
+
+pip install feedparser 

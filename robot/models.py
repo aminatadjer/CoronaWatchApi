@@ -4,19 +4,22 @@ from django.db import models
 class VideoYoutube(models.Model):
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-    titre = models.CharField(max_length=20)
+    titre = models.CharField(max_length=200)
     description = models.TextField()
     url= models.URLField()
 
 class Tweets(models.Model):
+    proprio=models.CharField(max_length=50)
+    content= models.CharField(max_length=500)
+    date= models.CharField(max_length=50)
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-    url = models.URLField()
+
 
 class GoogleSearchResult(models.Model):
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-    titre = models.CharField(max_length=20)
+    titre = models.CharField(max_length=200)
     description = models.TextField()
     url= models.URLField()
     date= models.CharField(max_length=50)
