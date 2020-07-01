@@ -1,7 +1,8 @@
 import tweepy
 import sys
 from .models import Tweets
-from config import ACCESS_TOKEN, ACCESS_TOKEN_SECRET,CONSUMER_KEY,CONSUMER_SECRET
+from config import ACCESS_TOKEN, ACCESS_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET
+
 
 def getTweets(counts):
 
@@ -18,5 +19,6 @@ def getTweets(counts):
 
     covid_tweets = tweepy.Cursor(api.search, q='فيروس كورونا').items(counts)
     for tweet in covid_tweets:
-        tweetObj= Tweets.objects.create(content=tweet.text, date=tweet.created_at, proprio=tweet.user.name)
+        tweetObj = Tweets.objects.create(
+            content=tweet.text, date=tweet.created_at, proprio=tweet.user.name)
         tweetObj.save()

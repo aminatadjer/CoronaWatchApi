@@ -3,3 +3,7 @@ from django.apps import AppConfig
 
 class RobotConfig(AppConfig):
     name = 'robot'
+
+    def ready(self):
+        from scraper import updater
+        updater.start()

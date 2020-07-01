@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'map',
     'videos',
     'commentaire',
-    'robot',
+    'robot.apps.RobotConfig',
+
 
 
 ]

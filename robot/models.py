@@ -6,22 +6,17 @@ from django.db import models
 class VideoYoutube(models.Model):
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-<<<<<<< HEAD
-    titre = models.CharField(max_length=1000)
-=======
-    titre = models.CharField(max_length=200)
->>>>>>> 34aa3cbd447a64e7f0f3e9a36467953e1d884df5
+    titre = models.TextField()
     description = models.TextField()
     url = models.URLField(primary_key=True)
 
 
 class Tweets(models.Model):
-    proprio=models.CharField(max_length=50)
-    content= models.CharField(max_length=500)
-    date= models.CharField(max_length=50)
+    proprio = models.CharField(max_length=50)
+    content = models.CharField(max_length=500)
+    date = models.CharField(max_length=50)
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-
 
 
 class GoogleSearchResult(models.Model):

@@ -1,6 +1,7 @@
 from rest_framework import serializers, fields
 from .models import *
 
+
 class GoogleSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = GoogleSearchResult
@@ -53,5 +54,3 @@ class VideoYoutubeSerializerSupprimer(serializers.ModelSerializer):
     class Meta:
         model = VideoYoutube
         fields = ['supprime']
-
-

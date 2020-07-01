@@ -13,4 +13,4 @@ feedparser
 requests
 APScheduler
 tweepy
-
+psycopg2

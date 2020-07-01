@@ -2,7 +2,7 @@ import feedparser
 from pprint import pprint
 from bs4 import BeautifulSoup
 
-#get the 100 first links in DZ feed and in arabic language
+# get the 100 first links in DZ feed and in arabic language
 from robot.models import GoogleSearchResult
 
 url = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"
@@ -29,11 +29,10 @@ class ParseFeed():
         feeds = feedparser.parse(self.feed_url).entries
         for f in feeds:
 
-            description= self.clean(f.get("description", ""))
-            date= f.get("published", "")
-            titre= f.get("title", "")
-            url= f.get("link", "")
-            searchObj = GoogleSearchResult.objects.create(description=description, date=date, titre=titre, url=url)
+            description = self.clean(f.get("description", ""))
+            date = f.get("published", "")
+            titre = f.get("title", "")
+            url = f.get("link", "")
+            searchObj = GoogleSearchResult.objects.create(
+                description=description, date=date, titre=titre, url=url)
             searchObj.save()
-
-

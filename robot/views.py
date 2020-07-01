@@ -3,14 +3,11 @@ from rest_framework import viewsets, permissions, status
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
-
-
 from rest_framework import viewsets, permissions
 from .twitterScrapping import getTweets
 from .googleSearchScrapping import ParseFeed
 from .serializers import *
 from .models import *
-from robot.youtubeScrapping import scrap_youtube_videos
 
 
 class VideoYoutubeViewSet(viewsets.ModelViewSet):
@@ -23,7 +20,6 @@ class VideoYoutubeViewSet(viewsets.ModelViewSet):
     @action(methods=['post', 'get'], detail=False)
     def show_list(self, request):
         if(request.method == "GET"):
-            scrap_youtube_videos()
             data = VideoYoutube.objects.all()
             serializers = VideoYoutubeSerializer(data, many=True)
             return Response(serializers.data)
@@ -38,7 +34,8 @@ class VideoYoutubeViewSet(viewsets.ModelViewSet):
     @action(methods=['put'], detail=True)
     def VideoSupprimer(self, request, pk=None):
         try:
-            video = VideoYoutube.objects.get(pk=pk)
+            video = VideoYoutube.objects.get(
+                pk=pk)
         except VideoYoutube.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = VideoYoutubeSerializerSupprimer(video, data=request.data)
