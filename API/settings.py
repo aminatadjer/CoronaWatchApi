@@ -15,6 +15,7 @@ import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from datetime import timedelta
+from config import LOBELIAS_EMAIL, LOBELIAS_MDP
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -29,7 +30,8 @@ SECRET_KEY = '&imf&&oqf02--k4p8x__r%n-2%c6rzrjiyaetp#g9m#vpsg%x4'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get('DEBUG', False)
 DEBUG = True
-ALLOWED_HOSTS = ["192.168.1.9", "127.0.0.1", "localhost"]
+
+ALLOWED_HOSTS = ["192.168.1.9", "127.0.0.1", "localhost", '198.211.99.20']
 
 
 # Application definition
@@ -219,8 +221,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'lobeliasteam@gmail.com'
-EMAIL_HOST_PASSWORD = 'gfgcklisma-@*'
+EMAIL_HOST_USER = LOBELIAS_EMAIL
+EMAIL_HOST_PASSWORD = LOBELIAS_MDP
 EMAIL_USE_TLS = True
 
 

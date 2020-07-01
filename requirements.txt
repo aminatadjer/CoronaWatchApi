@@ -12,3 +12,5 @@ Scrapy
 feedparser
 requests
 APScheduler
+tweepy
+
