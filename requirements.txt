@@ -10,3 +10,5 @@ psycopg2-binary
 dj-database-url
 Scrapy
 feedparser
+requests
+APScheduler

@@ -10,6 +10,7 @@ from rest_framework import viewsets, permissions
 from .googleSearchScrapping import ParseFeed
 from .serializers import *
 from .models import *
+from robot.youtubeScrapping import scrap_youtube_videos
 
 
 class VideoYoutubeViewSet(viewsets.ModelViewSet):
@@ -22,7 +23,7 @@ class VideoYoutubeViewSet(viewsets.ModelViewSet):
     @action(methods=['post', 'get'], detail=False)
     def show_list(self, request):
         if(request.method == "GET"):
-
+            scrap_youtube_videos()
             data = VideoYoutube.objects.all()
             serializers = VideoYoutubeSerializer(data, many=True)
             return Response(serializers.data)
@@ -30,7 +31,6 @@ class VideoYoutubeViewSet(viewsets.ModelViewSet):
             serializers = VideoYoutubeSerializer(data=request.data)
             if(serializers.is_valid()):
                 serializers.save()
-
 
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -128,7 +128,6 @@ class TweetsViewSet(viewsets.ModelViewSet):
             serializers = TweetSerializer(data=request.data)
             if(serializers.is_valid()):
                 serializers.save()
-
 
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
