@@ -8,6 +8,7 @@ class VideoYoutube(models.Model):
     supprime = models.BooleanField(default=False)
     titre = models.TextField()
     description = models.TextField()
+    date = models.DateTimeField()
     url = models.URLField(primary_key=True)
 
 

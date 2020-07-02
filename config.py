@@ -12,3 +12,5 @@ HEALTH_AGENT_EMAIL = 'ga_tadjer@esi.dz'
 
 # Youtube Scraping configuration
 SUBJECT = 'كورونا'
+API_KEY = 'AIzaSyBbN9W5cMiRHuwj7--AnUZZVEJ8Kl3lrRk'
+MAX_RESULTS = 50
