@@ -37,6 +37,27 @@ class VeilleViewSet(viewsets.ModelViewSet):
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['get'], detail=False)
+    def getTweets(self, request):
+        if (request.method == "GET"):
+            data = Veille.objects.filter(type="twitter")
+            serializers = VeilleSerializer(data, many=True)
+            return Response(serializers.data)
+
+    @action(methods=['get'], detail=False)
+    def getGoogle(self, request):
+        if (request.method == "GET"):
+            data = Veille.objects.filter(type="google")
+            serializers = VeilleSerializer(data, many=True)
+            return Response(serializers.data)
+
+    @action(methods=['get'], detail=False)
+    def getYoutube(self, request):
+        if (request.method == "GET"):
+            data = Veille.objects.filter(type="youtube")
+            serializers = VeilleSerializer(data, many=True)
+            return Response(serializers.data)
+
     @action(methods=['put'], detail=True)
     def Supprimer(self, request, pk=None):
         try:
