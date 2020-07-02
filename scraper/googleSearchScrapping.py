@@ -3,9 +3,10 @@ from pprint import pprint
 from bs4 import BeautifulSoup
 
 # get the 100 first links in DZ feed and in arabic language
-from robot.models import GoogleSearchResult
+from robot.models import Veille
+from config import GOOGLE_URL
 
-url = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"
+
 
 
 class ParseFeed():
@@ -33,6 +34,11 @@ class ParseFeed():
             date = f.get("published", "")
             titre = f.get("title", "")
             url = f.get("link", "")
-            searchObj = GoogleSearchResult.objects.create(
-                description=description, date=date, titre=titre, url=url)
-            searchObj.save()
+            if not Veille.objects.filter(url=url).exists():
+                searchObj = Veille.objects.create(description=description, date=date, titre=titre, url=url, type="google")
+                searchObj.save()
+
+
+def scrap():
+    feed = ParseFeed(GOOGLE_URL)
+    feed.parse()

@@ -1,6 +1,6 @@
 import tweepy
 import sys
-from .models import Tweets
+from robot.models import Veille
 from config import ACCESS_TOKEN, ACCESS_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET
 
 
@@ -19,6 +19,7 @@ def getTweets(counts):
 
     covid_tweets = tweepy.Cursor(api.search, q='فيروس كورونا').items(counts)
     for tweet in covid_tweets:
-        tweetObj = Tweets.objects.create(
-            content=tweet.text, date=tweet.created_at, proprio=tweet.user.name)
-        tweetObj.save()
+        url=f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
+        if not Veille.objects.filter(url=url).exists():
+            tweetObj = Veille.objects.create(description=tweet.text, date=tweet.created_at , titre=tweet.user.name, url=url, type="twitter")
+            tweetObj.save()

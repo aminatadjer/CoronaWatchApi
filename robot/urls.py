@@ -4,7 +4,5 @@ from .views import *
 
 
 router = routers.DefaultRouter()
-router.register('api/robot/google', GoogleSearchViewSet, 'googleScrap')
-router.register('api/robot/tweet', TweetsViewSet, 'tweetScrap')
-router.register('api/robot/youtube', VideoYoutubeViewSet, 'youtubeScrap')
+router.register('api/robot', VeilleViewSet, 'veille')
 urlpatterns = router.urls
