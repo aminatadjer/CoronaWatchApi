@@ -13,8 +13,11 @@ HEALTH_AGENT_EMAIL = 'ga_tadjer@esi.dz'
 # Youtube Scraping configuration
 SUBJECT = 'كورونا'
 
-#Youtube key
-YOUTUBE_API_KEY= "AIzaSyBbN9W5cMiRHuwj7--AnUZZVEJ8Kl3lrRk"
+
+#Youtube
+API_KEY = 'AIzaSyBbN9W5cMiRHuwj7--AnUZZVEJ8Kl3lrRk'
+MAX_RESULTS = 50
 
 #googgle scrapping url
 GOOGLE_URL = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"
+

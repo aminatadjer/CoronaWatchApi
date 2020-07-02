@@ -18,6 +18,7 @@ class Veille(models.Model):
     titre = models.TextField()
     description = models.TextField()
     date= models.CharField(max_length=40, default=None)
+
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
 

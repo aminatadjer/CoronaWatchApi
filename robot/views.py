@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 from rest_framework import viewsets, permissions
 from scraper.twitterScrapping import getTweets
 from scraper.googleSearchScrapping import ParseFeed
+from scraper import youtubeScraper
 from .serializers import *
 from .models import *
 
@@ -24,6 +25,7 @@ class VeilleViewSet(viewsets.ModelViewSet):
             feed = ParseFeed(self.url)
             feed.parse()
             getTweets(50)
+            youtubeScraper.scrap_youtube_videos()
             data = Veille.objects.all()
             serializers = VeilleSerializer(data, many=True)
             return Response(serializers.data)
