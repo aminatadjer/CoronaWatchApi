@@ -14,11 +14,10 @@ def scrap_youtube_videos():
     for item in sample(youtube_api_response.json()['items'], len(youtube_api_response.json()['items'])):
         if not Veille.objects.filter(url=f"{item.get('id').get('videoId')}").exists():
             video = Veille(
-                url=f"{item.get('id').get('videoId')}",
+                url=f"https://www.youtube.com/embed/{item.get('id').get('videoId')}",
                 titre=item.get("snippet").get("title"),
                 description=item.get("snippet").get("description"),
                 date=item.get("snippet").get("publishedAt"),
                 type="youtube"
             )
             video.save()
-

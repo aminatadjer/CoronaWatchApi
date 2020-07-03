@@ -10,17 +10,16 @@ class Veille(models.Model):
         ('google', 'scrapped from google search feed'),
     )
     url = models.URLField()
-    type=models.CharField(
+    type = models.CharField(
         max_length=50,
         choices=TYPE,
         default='youtube'
     )
     titre = models.TextField()
     description = models.TextField()
-    date= models.CharField(max_length=40, default=None)
+    date = models.DateTimeField()
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
-
 
     def __str__(self):
         return "%s, %s" % (self.titre, self.description)
