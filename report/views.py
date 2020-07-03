@@ -14,7 +14,7 @@ from .serializers import *
 class CasSignaleeViewSet(viewsets.ModelViewSet):
     queryset = CasSignalee.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = CasSignalerSerializer
 

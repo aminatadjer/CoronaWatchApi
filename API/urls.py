@@ -20,6 +20,7 @@ from rest_framework.schemas import get_schema_view
 
 
 from customauth.views import MyTokenObtainPairView, CustomUserCreate
+from customauth.serializers import UserCreateSerializer
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
@@ -39,6 +40,8 @@ urlpatterns = [
         description="This API represent the backend for the CORONAWATCH school project by LOBELIAS team"
     ), name='openapi-schema'),
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('', include('map.urls')),
     path('', include('coronawatch.urls')),
     path('', include('report.urls')),

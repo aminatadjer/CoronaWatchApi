@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
+
 from datetime import datetime
 # Create your views here.
 
@@ -17,7 +18,7 @@ from datetime import datetime
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = ArticleSerializer
 

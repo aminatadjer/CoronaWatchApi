@@ -16,6 +16,7 @@ SUBJECT = 'كورونا'
 
 #Youtube
 API_KEY = 'AIzaSyBbN9W5cMiRHuwj7--AnUZZVEJ8Kl3lrRk'
+API_KEY2= "AIzaSyC3QWRBVr-hZOyDeo-D1h0O1MHfAfLAxrY"
 MAX_RESULTS = 50
 
 #googgle scrapping url

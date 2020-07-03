@@ -4,10 +4,12 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 from .views import *
+from django.urls import path, include
 
 
 router = routers.DefaultRouter()
 router.register('api/user', UserViewSet, 'user')
+
 """""
 router.register('api/token/obtain', MyTokenObtainPairView, 'token_create')
 router.register('api/token/refresh/', TokenRefreshView, 'token_refresh')

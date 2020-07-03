@@ -12,7 +12,7 @@ from datetime import datetime
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = RegionSerializer
 
@@ -44,7 +44,7 @@ class RegionViewSet(viewsets.ModelViewSet):
 class InfoRegionViewSet(viewsets.ModelViewSet):
     queryset = HistoriqueRegion.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = InfoRegionSerializer
 
@@ -83,7 +83,7 @@ class InfoRegionViewSet(viewsets.ModelViewSet):
 class CentreReceptionViewSet(viewsets.ModelViewSet):
     queryset = CentreReception.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = CentreReceptionSerializer
 
