@@ -14,10 +14,9 @@ HEALTH_AGENT_EMAIL = 'ga_tadjer@esi.dz'
 SUBJECT = 'كورونا'
 
 
-#Youtube
-API_KEY = 'AIzaSyBbN9W5cMiRHuwj7--AnUZZVEJ8Kl3lrRk'
-MAX_RESULTS = 50
+# Youtube
+API_KEY = 'AIzaSyC3QWRBVr-hZOyDeo-D1h0O1MHfAfLAxrY'
+MAX_RESULTS = 100
 
-#googgle scrapping url
+# googgle scrapping url
 GOOGLE_URL = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"
-

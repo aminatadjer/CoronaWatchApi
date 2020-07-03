@@ -5,8 +5,7 @@ from bs4 import BeautifulSoup
 # get the 100 first links in DZ feed and in arabic language
 from robot.models import Veille
 from config import GOOGLE_URL
-
-
+from datetime import datetime as dt
 
 
 class ParseFeed():
@@ -31,11 +30,13 @@ class ParseFeed():
         for f in feeds:
 
             description = self.clean(f.get("description", ""))
-            date = f.get("published", "")
+            date = dt.strptime(
+                f.get("published", ""), '%a, %d %b %Y %H:%M:%S %Z')
             titre = f.get("title", "")
             url = f.get("link", "")
             if not Veille.objects.filter(url=url).exists():
-                searchObj = Veille.objects.create(description=description, date=date, titre=titre, url=url, type="google")
+                searchObj = Veille.objects.create(
+                    description=description, date=date, titre=titre, url=url, type="google")
                 searchObj.save()
 
 

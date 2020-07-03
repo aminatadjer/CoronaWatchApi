@@ -85,3 +85,9 @@ class VeilleViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['get'], detail=False)
+    def getValidate(self, request):
+        if (request.method == "GET"):
+            data = Veille.objects.filter(valide=True)
+            serializers = VeilleSerializer(data, many=True)
+            return Response(serializers.data)
