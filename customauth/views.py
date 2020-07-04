@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import action
 
-from .serializers import MyTokenObtainPairSerializer, UserCreateSerializer, UserSerializer, UserPasswordSerializer
+from .serializers import MyTokenObtainPairSerializer, UserCreateSerializer, UserSerializer, UserPasswordSerializer, EmailSerializer
 from rest_framework.views import APIView
 from rest_framework import status, permissions, viewsets
 from rest_framework.response import Response
@@ -41,6 +41,18 @@ class UserViewSet(viewsets.ModelViewSet):
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = UserPasswordSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['put'], detail=True)
+    def resetEmail(self, request, pk=None):
+        try:
+            user = User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = EmailSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
