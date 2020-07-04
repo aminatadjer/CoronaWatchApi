@@ -41,6 +41,10 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
 
 class UserPasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
