@@ -14,7 +14,7 @@ from .models import *
 class VeilleViewSet(viewsets.ModelViewSet):
     queryset = Veille.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = VeilleSerializer
     url = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"

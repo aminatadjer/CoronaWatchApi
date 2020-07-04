@@ -6,13 +6,14 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from datetime import datetime
 
+from django.contrib.auth.decorators import permission_required
 # Create your views here.
 
 
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = RegionSerializer
 
@@ -27,6 +28,7 @@ class RegionViewSet(viewsets.ModelViewSet):
         queryset = Region.objects.get(pk=pk)
         serializer = RegionSerializer(queryset)
         return Response(serializer.data)
+
 
     @action(methods=['put'], detail=True)
     def updateRegion(self, request, pk=None):
@@ -44,9 +46,10 @@ class RegionViewSet(viewsets.ModelViewSet):
 class InfoRegionViewSet(viewsets.ModelViewSet):
     queryset = HistoriqueRegion.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = InfoRegionSerializer
+
 
     @action(methods=['put'], detail=True)
     def rejeter(self, request, pk=None):
@@ -59,6 +62,7 @@ class InfoRegionViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     @action(methods=['put'], detail=True)
     def valider(self, request, pk=None):
@@ -83,7 +87,7 @@ class InfoRegionViewSet(viewsets.ModelViewSet):
 class CentreReceptionViewSet(viewsets.ModelViewSet):
     queryset = CentreReception.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = CentreReceptionSerializer
 

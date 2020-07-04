@@ -15,7 +15,7 @@ from .models import *
 class VideoViewSet(viewsets.ModelViewSet):
     queryset = VideoInternaut.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = VideoSerializer
 

@@ -10,5 +10,4 @@ class VideoInternaut(models.Model):
     vu = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
     titre = models.CharField(max_length=20)
-    description = models.TextField()
     video = models.FileField()

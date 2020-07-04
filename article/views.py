@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
+from django.contrib.auth.decorators import permission_required
 
 from datetime import datetime
 # Create your views here.
@@ -18,9 +19,10 @@ from datetime import datetime
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        permissions.AllowAny
     ]
     serializer_class = ArticleSerializer
+
 
     @action(methods=['post', 'get', 'put'], detail=False)
     def ArticleAdd(self, request):
@@ -63,6 +65,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
     @action(methods=['put'], detail=True)
     def ArticleSupprimer(self, request, pk=None):
         try:
@@ -75,6 +78,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
     @action(methods=['put'], detail=True)
     def ArticleValider(self, request, pk=None):
         try:
@@ -86,6 +90,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     @action(methods=['get'], detail=False)
     def ArticleAll(self, request):
