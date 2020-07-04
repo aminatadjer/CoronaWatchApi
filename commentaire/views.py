@@ -3,7 +3,7 @@ from rest_framework import viewsets, permissions, status
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
-
+from django.contrib.auth.decorators import permission_required
 
 from rest_framework import viewsets, permissions
 
@@ -31,6 +31,7 @@ class CommentViewSet(viewsets.ModelViewSet):
                 serializers.save()
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     @action(methods=['put'], detail=True)
     def CommentSupprimer(self, request, pk=None):

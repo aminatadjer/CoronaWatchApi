@@ -3,13 +3,13 @@ from django.conf import settings
 from random import sample
 from robot.models import Veille
 import requests
-from config import SUBJECT, API_KEY, MAX_RESULTS
+from config import SUBJECT, API_KEY2, MAX_RESULTS
 
 
 def scrap_youtube_videos():
     print("Scrapping")
     youtube_api_response = requests.get(
-        f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={SUBJECT}&key={API_KEY}&type=video&maxResults={MAX_RESULTS}"
+        f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={SUBJECT}&key={API_KEY2}&type=video&maxResults={MAX_RESULTS}"
     )
     for item in sample(youtube_api_response.json()['items'], len(youtube_api_response.json()['items'])):
         if not Veille.objects.filter(url=f"{item.get('id').get('videoId')}").exists():

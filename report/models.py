@@ -1,10 +1,13 @@
 from django.db import models
 from map.models import Region
+from customauth.models import User
+
 # Create your models here.
 
 
 
 class CasSignalee(models.Model):
+    owner= models.ForeignKey(User, related_name='cas', on_delete=models.CASCADE, default=1)
     valide = models.BooleanField(default=False)
     supprime = models.BooleanField(default=False)
     vu = models.BooleanField(default=False)
