@@ -57,3 +57,10 @@ class VideoViewSet(viewsets.ModelViewSet):
 
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['get'], detail=False)
+    def getValidate(self, request):
+        if (request.method == "GET"):
+            data = VideoInternaut.objects.filter(valide=True)
+            serializers = VideoSerializer(data, many=True)
+            return Response(serializers.data)
