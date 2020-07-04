@@ -9,7 +9,7 @@ from django.core.files import File
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
-
+import io
 from datetime import datetime
 # Create your views here.
 
@@ -48,16 +48,16 @@ class ArticleViewSet(viewsets.ModelViewSet):
                 aaa = render_to_string(
                     'index.html', {'media': displayMedia, 'Title': title, 'content': content})
                 print(aaa)
-                instance = serializers.save()
-                instance_id = instance.id
+                instance_id = Article.objects.latest('id').id+1
+                print(instance_id)
                 nameF = 'media/articles/article' + str(instance_id)+'.html'
                 mydata = request.data
                 mydata['url'] = nameF
                 serializers = ArticleSerializer(data=mydata)
                 if(serializers.is_valid()):
                     serializers.save()
-                f = open(nameF, 'w')
-                f.write(aaa)
+                with io.open(nameF, "w", encoding="utf-8") as f:
+                    f.write(aaa)
                 f.close()
                 return Response(serializers.data, status=status.HTTP_201_CREATED)
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -91,4 +91,11 @@ class ArticleViewSet(viewsets.ModelViewSet):
         if(request.method == "GET"):
             data = Article.objects.all()
             serializers = ArticleSerializerURL(data, many=True)
+            return Response(serializers.data)
+
+    @action(methods=['get'], detail=False)
+    def getValidate(self, request):
+        if (request.method == "GET"):
+            data = Article.objects.filter(valide=True)
+            serializers = ArticleSerializer(data, many=True)
             return Response(serializers.data)

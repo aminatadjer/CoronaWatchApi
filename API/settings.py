@@ -31,7 +31,8 @@ SECRET_KEY = '&imf&&oqf02--k4p8x__r%n-2%c6rzrjiyaetp#g9m#vpsg%x4'
 #DEBUG = os.environ.get('DEBUG', False)
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.1.9", "127.0.0.1", "localhost", '198.211.99.20']
+ALLOWED_HOSTS = ["192.168.1.9", "127.0.0.1", "localhost",
+                 '198.211.99.20', 'd96196169b7a.ngrok.io']
 
 
 # Application definition
