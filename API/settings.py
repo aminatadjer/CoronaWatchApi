@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'videos',
     'commentaire',
     'robot.apps.RobotConfig',
+    'etatSante',
+    'notification'
 
 
 

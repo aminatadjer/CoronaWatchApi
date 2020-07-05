@@ -9,6 +9,8 @@ from scraper.googleSearchScrapping import ParseFeed
 from scraper import youtubeScraper
 from .serializers import *
 from .models import *
+from notification.models import *
+from config import notifArticleTitre, Suj, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre
 
 
 class VeilleViewSet(viewsets.ModelViewSet):
@@ -81,6 +83,12 @@ class VeilleViewSet(viewsets.ModelViewSet):
 
         if serializer.is_valid():
             serializer.save()
+            notification = Notification(
+                titre=notifRobotTitre,
+                typeNotif=0,
+                description=veille.type+" "+veille.description+" "+Suj
+            )
+            notification.save()
 
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

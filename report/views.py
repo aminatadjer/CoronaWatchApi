@@ -6,9 +6,11 @@ from rest_framework.decorators import api_view, action
 from sendMail.views import send
 
 from rest_framework import viewsets, permissions, renderers
+from config import notifArticleTitre, Yours, Suj, Accept, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre
 
 from config import CCC_AGENT_EMAIL, HEALTH_AGENT_EMAIL
 from .serializers import *
+from notification.models import *
 
 
 class CasSignaleeViewSet(viewsets.ModelViewSet):
@@ -56,6 +58,12 @@ class CasSignaleeViewSet(viewsets.ModelViewSet):
         serializer1 = CasSignalerSerializer(cas)
         if serializer.is_valid():
             serializer.save()
+            notification = Notification(
+                titre=notifVidEtRepTitre,
+                typeNotif=1,
+                description=Accept
+            )
+            notification.save()
             x = str(serializer1.data['media']).split("/")
             send(serializer1.data['commentaire'],
                  "Nouveau cas Signalé validé", "media/" + x[2], [CCC_AGENT_EMAIL])

@@ -9,10 +9,11 @@ from django.core.files import File
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from notification.models import *
 import io
 
 from django.contrib.auth.decorators import permission_required
-
+from config import notifArticleTitre, Suj, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre
 from datetime import datetime
 # Create your views here.
 
@@ -84,8 +85,15 @@ class ArticleViewSet(viewsets.ModelViewSet):
         except Article.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = ArticleSerializerValider(article, data=request.data)
+
         if serializer.is_valid():
             serializer.save()
+            notification = Notification(
+                titre=notifArticleTitre,
+                typeNotif=0,
+                description=article.titre+" "+Suj
+            )
+            notification.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

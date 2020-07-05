@@ -4,12 +4,13 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 from sendMail.views import send
-
+from notification.models import *
 from rest_framework import viewsets, permissions
 
 
 from .serializers import *
 from .models import *
+from config import notifArticleTitre, Yours, Suj, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre
 
 
 class VideoViewSet(viewsets.ModelViewSet):
@@ -54,6 +55,18 @@ class VideoViewSet(viewsets.ModelViewSet):
 
         if serializer.is_valid():
             serializer.save()
+            notification = Notification(
+                titre=notifVideoUserTitre,
+                typeNotif=0,
+                description=Suj+" "+video.commentaire
+            )
+            notification.save()
+            notification = Notification(
+                titre=notifVidEtRepTitre,
+                typeNotif=1,
+                description=Yours+" "+video.commentaire
+            )
+            notification.save()
 
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
