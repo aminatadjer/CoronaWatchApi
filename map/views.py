@@ -49,7 +49,7 @@ class RegionViewSet(viewsets.ModelViewSet):
             notification = Notification(
                 titre=notifMapTitre,
                 typeNotif=0,
-                description=Suj+" تم تحديث احصائيات منطقة " + region.ArabicName
+                description=Suj+" " + region.ArabicName
             )
             notification.save()
             return Response(serializer.data)

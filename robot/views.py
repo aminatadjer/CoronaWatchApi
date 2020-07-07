@@ -10,7 +10,7 @@ from scraper import youtubeScraper
 from .serializers import *
 from .models import *
 from notification.models import *
-from config import notifArticleTitre, Suj, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre
+from config import notifArticleTitre, Suj, notifMapTitre, notifRobotTitre, notifVideoUserTitre, notifVidEtRepTitre, GOOGLE_URL
 
 
 class VeilleViewSet(viewsets.ModelViewSet):
@@ -19,7 +19,7 @@ class VeilleViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = VeilleSerializer
-    url = "http://news.google.com/news?q=covid-19&hl=ar-DZ&sort=date&gl=DZ&num=100&output=rss"
+    url = GOOGLE_URL
 
     @action(methods=['post', 'get'], detail=False)
     def getData(self, request):
