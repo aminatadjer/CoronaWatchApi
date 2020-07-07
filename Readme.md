@@ -1,19 +1,26 @@
-dependecies:
+# Corona Watch Api with Django
 
-pip install djangorestframework
-pip install markdown # Markdown support for the browsable API.
-pip install django-filter # Filtering support
+## Getting started:
 
-pip install mysqlclient
+The instructions below :point_down:   will get you a copy of the project up and running on your local machine. 
 
-pip install djoser
+```
+% git clone https://github.com/aminatadjer/CoronaWatchApi.git
+% cd CoronaWatchApi
+% pip install -r requirements
 
-pip install django-cors-headers
+```
+Now you need to migrate:
 
-pip install djangorestframework-simplejwt
+```
+% python manage.py migrate
 
-pip install dj_database_url
+```
+And finally run the server:
 
-pip install tweepy
+```
+% python manage.py runserver
 
-pip install feedparser 
+```
+
+
