@@ -1,4 +1,4 @@
-django==3.0.4
+django
 markdown
 django-filter
 djoser
